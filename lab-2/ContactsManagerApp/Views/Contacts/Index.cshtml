@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Contacts";
+}
+
+@model List<ContactViewModel>
+
+<div class="text-center">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="display-6"><i class="fas fa-address-book"></i> @ViewBag.Title</h2>
+        <a asp-controller="contacts" asp-action="create" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add Contact
+        </a>
+    </div>
+    
+    @if (Model != null && Model.Count() > 0)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Category</th>
+                    <th>Created at</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contact in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-link" asp-controller="contacts" asp-action="edit" asp-route-id="@contact.Id">@contact.FirstName</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-link" asp-controller="contacts" asp-action="edit" asp-route-id="@contact.Id">@contact.LastName</a>
+                        </td>
+                        <td>@contact.Phone</td>
+                        <td>@contact.Email</td>
+                        <td>@contact.CategoryName</td>
+                        <td>@contact.CreatedAt</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

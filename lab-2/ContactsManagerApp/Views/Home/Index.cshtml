@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Welcome to Contacts Manager";
+}
+
+<div class="container text-center my-5">
+    <h2 class="display-6">@ViewBag.Title</h2>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="welcome-card card text-white bg-primary mb-4">
+                <a asp-controller="contacts" asp-action="index">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="fas fa-address-book fa-2x"></i><br />
+                            Contacts
+                        </h2>
+                        <p class="card-text">Manage your contacts easily and efficiently.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="welcome-card card text-white bg-success mb-4">
+                <a asp-controller="categories" asp-action="index">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="fas fa-tags fa-2x"></i><br />
+                            Categories
+                        </h2>
+                        <p class="card-text">Organize your contacts into categories for better management.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

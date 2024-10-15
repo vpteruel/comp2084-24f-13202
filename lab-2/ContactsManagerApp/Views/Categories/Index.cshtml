@@ -1,0 +1,91 @@
+﻿@model List<CategoryViewModel>
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="text-center">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="display-6"><i class="fas fa-tags"></i> @ViewBag.Title</h2>
+        <a asp-controller="categories" asp-action="create" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add Category
+        </a>
+    </div>
+
+    @if (Model != null && Model.Count() > 0)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Modified at</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-link" asp-controller="categories" asp-action="edit" asp-route-id="@category.Id">@category.Name</a>
+                        </td>
+                        <td>
+                            @category.ModifiedAt
+                        </td>
+                        <td>
+                            <a class="btn" data-id="@category.Id" onclick="confirmDelete(event)" title="Delete">
+                                <i class="fas fa-trash-alt text-danger"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No categories available.</p>
+    }
+</div>
+
+<!-- delete confirmation modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteButton" data-dismiss="modal">Cancel</button>
+                <form id="confirmDeleteForm" asp-action="delete" method="post" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <input id="currentItemId" type="hidden" name="id" />
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function confirmDelete(event) {
+            event.preventDefault();
+            const id = event.currentTarget.getAttribute('data-id');
+            $('#currentItemId').val(id);
+            $('#confirmDeleteModal').modal('show');
+        }
+
+        $('#cancelDeleteButton').click(function () {
+            $('#confirmDeleteModal').modal('hide');
+        });
+
+        $('#confirmDeleteButton').click(function () {
+            const form = $(this).closest('form');
+            form.submit();
+        });
+    </script>
+}
