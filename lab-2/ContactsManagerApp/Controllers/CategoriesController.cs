@@ -65,7 +65,7 @@ namespace ContactsManagerApp.Controllers
             if (id == null)
                 return NotFound();
 
-            var contact = await _context.Categories
+            var category = await _context.Categories
                 .AsNoTracking()
                 .Select(category => new CategoryViewModel
                 {
@@ -74,10 +74,10 @@ namespace ContactsManagerApp.Controllers
                 })
                 .FirstOrDefaultAsync(p => p.Id == id);
 
-            if (contact == null)
+            if (category == null)
                 return NotFound();
 
-            return View(nameof(Details), contact); // using the same view for Add/Edit
+            return View(nameof(Details), category); // using the same view for Add/Edit
         }
 
         [HttpPost]

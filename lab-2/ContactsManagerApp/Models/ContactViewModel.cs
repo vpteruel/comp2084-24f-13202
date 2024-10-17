@@ -26,16 +26,16 @@ namespace ContactsManagerApp.Models
         public int? CategoryId { get; set; }
 
         [BindNever]
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
 
         [BindNever]
-        public IEnumerable<CategoryViewModel> Categories { get; set; } // for populating the drop-down list in Add/Edit view
+        public IEnumerable<CategoryViewModel>? Categories { get; set; } // for populating the drop-down list in Add/Edit view
 
         [BindNever]
-        public string FullName => $"{FirstName} {LastName}";
+        public string? FullName => $"{FirstName} {LastName}";
 
         [BindNever]
-        public string Slug => $"{FirstName}-{LastName}".ToLower();
+        public string? Slug => $"{FirstName}-{LastName}".ToLower();
 
         [BindNever]
         public string? CreatedAt { get; set; }
