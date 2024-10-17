@@ -65,6 +65,6 @@ Feel free to reach out if you have any questions or suggestions for improvements
 
 ### Authors
 
-- Daniela | [Pamela](https://github.com/danielaoliveira90)
-- Pamela | [Pamela](https://github.com/pamusialak)
-- Vinicius | [Vinicius](https://github.com/vpteruel)
+- [Daniela](https://github.com/danielaoliveira90)
+- [Pamela](https://github.com/pamusialak)
+- [Vinicius](https://github.com/vpteruel)
