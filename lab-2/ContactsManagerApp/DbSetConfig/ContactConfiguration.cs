@@ -29,6 +29,9 @@ namespace ContactsManagerApp.DbSetConfig
             builder.Property(p => p.CreatedAt)
                 .IsRequired();
 
+            builder.Property(p => p.ModifiedAt)
+                .IsRequired();
+
             // define relationship between ContactEntity and CategoryEntity (foreign key)
             builder.HasOne(p => p.Category)
                 .WithMany()

@@ -46,13 +46,14 @@ namespace ContactsManagerApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var contact = new CategoryEntity
+                var category = new CategoryEntity
                 {
                     Name = viewModel.Name
                 };
 
-                _context.Add(contact);
+                _context.Categories.Add(category);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
 
@@ -69,7 +70,7 @@ namespace ContactsManagerApp.Controllers
                 .Select(category => new CategoryViewModel
                 {
                     Id = category.Id,
-                    Name = category.Name,
+                    Name = category.Name
                 })
                 .FirstOrDefaultAsync(p => p.Id == id);
 
@@ -97,7 +98,7 @@ namespace ContactsManagerApp.Controllers
 
                 try
                 {
-                    _context.Update(category);
+                    _context.Categories.Update(category);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -130,7 +131,7 @@ namespace ContactsManagerApp.Controllers
 
         private bool CategoryExists(int id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.Categories.Any(p => p.Id == id);
         }
     }
 }

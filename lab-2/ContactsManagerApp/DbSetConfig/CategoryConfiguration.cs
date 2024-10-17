@@ -14,6 +14,12 @@ namespace ContactsManagerApp.DbSetConfig
                 .IsRequired()
                 .HasMaxLength(100);
 
+            builder.Property(p => p.CreatedAt)
+                .IsRequired();
+
+            builder.Property(p => p.ModifiedAt)
+                .IsRequired();
+
             // seed data
             var categories = new[]
             {
