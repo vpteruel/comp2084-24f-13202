@@ -35,7 +35,7 @@ namespace ContactsManagerApp.Models
         public string? FullName => $"{FirstName} {LastName}";
 
         [BindNever]
-        public string? Slug => $"{FirstName}-{LastName}".ToLower();
+        public string? Slug => $"{FirstName}-{LastName}".Replace(" ", "-").ToLower();
 
         [BindNever]
         public string? CreatedAt { get; set; }

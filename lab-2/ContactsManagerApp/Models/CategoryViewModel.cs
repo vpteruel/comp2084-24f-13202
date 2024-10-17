@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ContactsManagerApp.Models
 {
@@ -13,5 +14,8 @@ namespace ContactsManagerApp.Models
         public string? CreatedAt { get; set; }
 
         public string? ModifiedAt { get; set; }
+
+        [BindNever]
+        public string? Slug => Name.ToLower();
     }
 }

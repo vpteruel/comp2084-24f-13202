@@ -73,7 +73,7 @@ namespace ContactsManagerApp.Controllers
             return View(nameof(Details), viewModel);
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, string? slug)
         {
             if (id == null)
                 return NotFound();
@@ -94,7 +94,7 @@ namespace ContactsManagerApp.Controllers
                 })
                 .FirstOrDefaultAsync(p => p.Id == id);
 
-            if (contact == null)
+            if (contact == null || contact.Slug != slug)
                 return NotFound();
 
             return View(nameof(Details), contact); // using the same view for Add/Edit

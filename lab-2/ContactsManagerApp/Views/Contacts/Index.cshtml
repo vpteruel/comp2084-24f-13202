@@ -30,10 +30,10 @@
                 {
                     <tr>
                         <td>
-                            <a class="btn btn-link" asp-controller="contacts" asp-action="edit" asp-route-id="@contact.Id">@contact.FirstName</a>
+                            <a class="btn btn-link" asp-controller="contacts" asp-action="edit" asp-route-id="@contact.Id" asp-route-slug="@contact.Slug">@contact.FirstName</a>
                         </td>
                         <td>
-                            <a class="btn btn-link" asp-controller="contacts" asp-action="edit" asp-route-id="@contact.Id">@contact.LastName</a>
+                            <a class="btn btn-link" asp-controller="contacts" asp-action="edit" asp-route-id="@contact.Id" asp-route-slug="@contact.Slug">@contact.LastName</a>
                         </td>
                         <td>@contact.Phone</td>
                         <td>@contact.Email</td>

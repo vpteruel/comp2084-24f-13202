@@ -44,7 +44,7 @@ namespace ContactsManagerApp
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=home}/{action=index}/{id?}");
+                pattern: "{controller=home}/{action=index}/{id?}/{slug?}");
 
             app.Run();
         }
