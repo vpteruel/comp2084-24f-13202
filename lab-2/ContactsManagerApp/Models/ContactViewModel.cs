@@ -11,7 +11,7 @@ namespace ContactsManagerApp.Models
         [StringLength(100)]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Las name is required")]
+        [Required(ErrorMessage = "Last name is required")]
         [StringLength(100)]
         public string LastName { get; set; }
 
